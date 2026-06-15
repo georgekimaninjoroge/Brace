@@ -734,6 +734,18 @@
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
+  function syncToggleToField(mod, fieldId) {
+    var hasVal = !!val(fieldId);
+    var row = document.querySelector('[data-mod="' + mod + '"]');
+    if (hasVal && !enabled.has(mod)) {
+      enabled.add(mod);
+      row.classList.add('active');
+    } else if (!hasVal && enabled.has(mod)) {
+      enabled.delete(mod);
+      row.classList.remove('active');
+    }
+  }
+
   function update() {
     var business = val('f-business');
     var whatsapp = val('f-whatsapp');
@@ -745,6 +757,9 @@
     var emailjs  = val('f-emailjs');
     var ejsSvc   = val('f-emailjs-svc');
     var ejsTpl   = val('f-emailjs-tpl');
+
+    syncToggleToField('ga', 'f-ga');
+    syncToggleToField('pixel', 'f-pixel');
 
     var disabled = [];
     ['seo','speed','cookie','forms','ga','pixel'].forEach(function(m){
