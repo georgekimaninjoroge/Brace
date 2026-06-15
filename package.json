@@ -1,0 +1,36 @@
+{
+  "name": "brace-ke",
+  "version": "1.0.0",
+  "description": "Essential web infrastructure for African SMEs — WhatsApp widget, analytics, SEO, cookie consent, contact forms and speed optimisation in one script tag.",
+  "main": "brace.js",
+  "scripts": {
+    "build": "node build.js",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "keywords": [
+    "whatsapp",
+    "widget",
+    "analytics",
+    "seo",
+    "cookie-consent",
+    "kenya",
+    "africa",
+    "sme",
+    "small-business",
+    "web",
+    "performance"
+  ],
+  "author": "George Kimani Njoroge <georgekimaninjoroge@outlook.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/georgekimaninjoroge/brace"
+  },
+  "homepage": "https://github.com/georgekimaninjoroge/brace#readme",
+  "files": [
+    "brace.js",
+    "brace.min.js",
+    "README.md",
+    "LICENSE"
+  ]
+}
