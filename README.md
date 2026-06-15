@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-One script tag. WhatsApp, SEO, analytics and cookie consent. Everything a web agency charges for, free.
+One script tag. WhatsApp, SEO, analytics and cookie consent. Everything a web agency charges extra, for free.
 </p>
 
 ## The Problem
