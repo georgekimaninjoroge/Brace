@@ -3,172 +3,177 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Brace — Get Your Script Tag</title>
+<title>Brace Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
     --purple: #7B7FE8;
-    --purple-light: #EFEFFD;
+    --purple-mid: #6366d6;
     --purple-dark: #5558C8;
-    --green: #25D366;
-    --text: #111827;
-    --muted: #6B7280;
-    --border: #E5E7EB;
-    --bg: #F9FAFB;
-    --white: #ffffff;
-    --radius: 10px;
-    --mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+    --purple-surface: #F0F0FD;
+    --purple-border: #D8D9F8;
+
+    --canvas: #ffffff;
+    --canvas-soft: #fafafa;
+    --surface-card: #ffffff;
+    --surface-strong: #f0f0f3;
+    --surface-dark: #171717;
+    --surface-dark-elevated: #1e1e1e;
+    --surface-dark-2: #252525;
+
+    --ink: #171717;
+    --body: #60646c;
+    --muted: #999999;
+    --muted-soft: #cccccc;
+    --on-dark: #ffffff;
+    --on-dark-soft: #b0b4ba;
+
+    --hairline: #f0f0f3;
+    --hairline-soft: #f5f5f7;
+    --hairline-strong: #dcdee0;
+
+    --green: #16a34a;
+    --green-surface: #f0fdf4;
+
+    --sky-light: #cfe7ff;
+    --sky-mid: #a8c8e8;
+
+    --r-sm: 6px;
+    --r-md: 8px;
+    --r-lg: 12px;
+    --r-xl: 16px;
+    --r-pill: 9999px;
+
+    --mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
-    background: var(--bg);
-    color: var(--text);
+    font-family: var(--sans);
+    background: var(--canvas-soft);
+    color: var(--ink);
     min-height: 100vh;
     line-height: 1.5;
+    font-size: 14px;
   }
-
-  /* NAV */
-  nav {
-    background: var(--white);
-    border-bottom: 1px solid var(--border);
-    padding: 0 32px;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-
-  .nav-logo {
-    width: 28px;
-    height: 28px;
-    background: var(--purple);
-    border-radius: 7px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .nav-logo svg { width: 16px; height: 16px; fill: white; }
-
-  .nav-name {
-    font-weight: 700;
-    font-size: 16px;
-    color: var(--text);
-    letter-spacing: -.3px;
-  }
-
-  .nav-tag {
-    margin-left: 4px;
-    font-size: 11px;
-    background: var(--purple-light);
-    color: var(--purple-dark);
-    padding: 2px 8px;
-    border-radius: 20px;
-    font-weight: 600;
-  }
-
-  /* HERO */
+    /* ── HERO ── */
   .hero {
+    background: linear-gradient(180deg, var(--sky-light) 0%, var(--canvas) 100%);
     text-align: center;
-    padding: 56px 24px 40px;
+    padding: 56px 24px 48px;
+    border-bottom: 1px solid var(--hairline-strong);
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .88px;
+    color: var(--purple-dark);
+    margin-bottom: 16px;
   }
 
   .hero h1 {
-    font-size: clamp(28px, 5vw, 44px);
-    font-weight: 800;
-    letter-spacing: -.8px;
-    color: var(--text);
-    line-height: 1.15;
+    font-size: clamp(28px, 4.5vw, 42px);
+    font-weight: 600;
+    letter-spacing: -1.1px;
+    color: var(--ink);
+    line-height: 1.1;
+    max-width: 560px;
+    margin: 0 auto;
   }
 
   .hero h1 span { color: var(--purple); }
 
-  .hero p {
-    margin-top: 12px;
-    color: var(--muted);
-    font-size: 16px;
-    max-width: 480px;
+  .hero-sub {
+    margin-top: 14px;
+    color: var(--body);
+    font-size: 15px;
+    max-width: 440px;
     margin-left: auto;
     margin-right: auto;
+    line-height: 1.6;
   }
 
-  /* LAYOUT */
-  .layout {
-    max-width: 900px;
+  /* ── LAYOUT ── */
+  .page {
+    max-width: 1160px;
     margin: 0 auto;
-    padding: 0 24px 80px;
+    padding: 24px 24px 80px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 560px;
     gap: 24px;
     align-items: start;
   }
 
-  @media (max-width: 680px) {
-    .layout { grid-template-columns: 1fr; }
+  @media (max-width: 780px) {
+    .page { grid-template-columns: 1fr; }
+    .output-sticky { position: static !important; }
   }
 
-  /* CARD */
+  .config-col { display: flex; flex-direction: column; gap: 16px; }
+
+  /* ── CARD ── */
   .card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
+    background: var(--surface-card);
+    border: 1px solid var(--hairline-strong);
+    border-radius: var(--r-lg);
     padding: 24px;
   }
 
-  .card-title {
-    font-size: 13px;
-    font-weight: 700;
+  .card-label {
+    font-size: 11px;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: .6px;
+    letter-spacing: .88px;
     color: var(--muted);
     margin-bottom: 20px;
   }
 
-  /* FORM FIELDS */
-  .field { margin-bottom: 16px; }
+  /* ── FIELDS ── */
+  .field { margin-bottom: 18px; }
+  .field:last-child { margin-bottom: 0; }
 
-  .field label {
+  .field-label {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 7px;
     font-size: 13px;
     font-weight: 600;
-    color: var(--text);
-    margin-bottom: 6px;
+    color: var(--ink);
+    margin-bottom: 7px;
   }
 
-  .field label .badge {
+  .badge {
     font-size: 10px;
-    font-weight: 700;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: .4px;
-    background: var(--purple-light);
-    color: var(--purple);
-    padding: 1px 6px;
-    border-radius: 4px;
+    padding: 2px 7px;
+    border-radius: var(--r-pill);
   }
 
-  .field label .badge.opt {
-    background: #F3F4F6;
-    color: var(--muted);
-  }
+  .badge-req { background: var(--purple-surface); color: var(--purple-dark); }
+  .badge-opt { background: var(--surface-strong); color: var(--muted); }
 
   .field input,
   .field select {
     width: 100%;
-    padding: 9px 12px;
-    border: 1px solid var(--border);
-    border-radius: 7px;
+    padding: 10px 13px;
+    border: 1px solid var(--hairline-strong);
+    border-radius: var(--r-md);
     font-size: 14px;
-    color: var(--text);
-    background: var(--white);
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--canvas);
     transition: border-color .15s, box-shadow .15s;
     outline: none;
+    height: 40px;
   }
 
   .field input:focus,
@@ -177,84 +182,108 @@
     box-shadow: 0 0 0 3px rgba(123,127,232,.12);
   }
 
-  .field .hint {
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 4px;
+  .field input::placeholder { color: var(--muted-soft); }
+
+  .field-hint {
+    font-size: 12px;
+    color: var(--body);
+    margin-top: 5px;
+    line-height: 1.5;
   }
 
-  /* COLOR PICKER ROW */
+  /* ── COLOR ROW ── */
   .color-row {
     display: flex;
     gap: 8px;
     align-items: center;
   }
 
-  .color-row input[type="text"] {
-    flex: 1;
-  }
+  .color-row input[type="text"] { flex: 1; }
 
   .color-row input[type="color"] {
     width: 40px;
-    height: 38px;
-    padding: 2px;
-    border: 1px solid var(--border);
-    border-radius: 7px;
+    height: 40px;
+    padding: 3px;
+    border: 1px solid var(--hairline-strong);
+    border-radius: var(--r-md);
     cursor: pointer;
-    background: none;
+    background: var(--canvas);
+    flex-shrink: 0;
   }
 
-  /* MODULE TOGGLES */
-  .toggles { display: flex; flex-direction: column; gap: 10px; }
+  /* ── TOGGLES ── */
+  .toggles { display: flex; flex-direction: column; gap: 8px; }
 
   .toggle-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 12px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
+    padding: 12px 14px;
+    border: 1px solid var(--hairline-strong);
+    border-radius: var(--r-md);
     cursor: pointer;
-    transition: background .12s;
+    transition: background .12s, border-color .15s;
     user-select: none;
+    gap: 12px;
   }
 
-  .toggle-row:hover { background: var(--bg); }
-  .toggle-row.active { border-color: var(--purple); background: var(--purple-light); }
+  .toggle-row:hover { background: var(--canvas-soft); }
 
-  .toggle-info { display: flex; align-items: center; gap: 10px; }
+  .toggle-row.active {
+    border-color: var(--purple-border);
+    background: var(--purple-surface);
+  }
+
+  .toggle-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+  }
 
   .toggle-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
+    width: 34px;
+    height: 34px;
+    border-radius: var(--r-md);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 15px;
-    background: var(--bg);
+    background: var(--surface-strong);
+    flex-shrink: 0;
+    color: var(--body);
+  }
+
+  .toggle-icon svg {
+    width: 16px;
+    height: 16px;
     flex-shrink: 0;
   }
 
-  .toggle-row.active .toggle-icon { background: var(--white); }
+  .toggle-row.active .toggle-icon {
+    background: rgba(255,255,255,.7);
+    color: var(--purple-dark);
+  }
 
   .toggle-text strong {
     display: block;
     font-size: 13px;
     font-weight: 600;
+    color: var(--ink);
   }
 
   .toggle-text span {
     font-size: 11px;
-    color: var(--muted);
+    color: var(--body);
+    line-height: 1.4;
   }
 
-  /* PILL SWITCH */
+  /* ── PILL SWITCH ── */
   .switch {
     width: 38px;
     height: 22px;
-    background: var(--border);
-    border-radius: 20px;
+    background: var(--hairline-strong);
+    border-radius: var(--r-pill);
     position: relative;
     flex-shrink: 0;
     transition: background .2s;
@@ -276,86 +305,101 @@
   .toggle-row.active .switch { background: var(--purple); }
   .toggle-row.active .switch::after { transform: translateX(16px); }
 
-  /* OUTPUT PANEL */
-  .output-panel {
+  /* ── OUTPUT PANEL ── */
+  .output-sticky {
     position: sticky;
-    top: 72px;
+    top: 80px;
   }
 
-  .output-card {
-    background: #0F1117;
-    border-radius: var(--radius);
+  .output-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* CODE CARD — now white */
+  .code-card {
+    background: var(--canvas);
+    border: 1px solid var(--hairline-strong);
+    border-radius: var(--r-lg);
     overflow: hidden;
   }
 
-  .output-header {
+  .code-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 16px;
-    border-bottom: 1px solid rgba(255,255,255,.08);
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--hairline-strong);
+    background: var(--canvas-soft);
   }
 
-  .output-label {
-    font-size: 12px;
-    font-weight: 600;
-    color: rgba(255,255,255,.4);
-    text-transform: uppercase;
-    letter-spacing: .6px;
-  }
-
-  .output-dots { display: flex; gap: 6px; }
-  .output-dots span {
+  .code-dots { display: flex; gap: 6px; }
+  .code-dots span {
     width: 10px;
     height: 10px;
     border-radius: 50%;
   }
-  .output-dots span:nth-child(1) { background: #FF5F57; }
-  .output-dots span:nth-child(2) { background: #FEBC2E; }
-  .output-dots span:nth-child(3) { background: #28C840; }
+  .code-dots span:nth-child(1) { background: #FF5F57; }
+  .code-dots span:nth-child(2) { background: #FEBC2E; }
+  .code-dots span:nth-child(3) { background: #28C840; }
 
-  .output-code {
-    padding: 20px 16px;
+  .code-title {
     font-family: var(--mono);
-    font-size: 12px;
-    line-height: 1.7;
-    color: #E2E8F0;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: .4px;
+    text-transform: uppercase;
+  }
+
+  .code-body {
+    padding: 20px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    line-height: 1.75;
+    color: var(--ink);
     white-space: pre-wrap;
     word-break: break-all;
     min-height: 160px;
+    background: var(--canvas);
   }
 
-  .tok-tag { color: #7B7FE8; }
-  .tok-attr { color: #A78BFA; }
-  .tok-val { color: #86EFAC; }
-  .tok-comment { color: rgba(255,255,255,.25); font-style: italic; }
+  /* syntax tokens for white bg */
+  .tok-tag  { color: var(--purple-dark); }
+  .tok-attr { color: #7c3aed; }
+  .tok-val  { color: #16a34a; }
 
+  /* COPY BUTTON — purple accent */
   .copy-btn {
+    display: block;
     width: 100%;
-    padding: 13px;
+    padding: 13px 20px;
     background: var(--purple);
-    color: white;
+    color: #ffffff;
     border: none;
+    border-radius: var(--r-md);
+    font-family: var(--sans);
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 500;
     cursor: pointer;
     transition: background .15s, transform .1s;
     letter-spacing: -.1px;
+    text-align: center;
   }
 
   .copy-btn:hover { background: var(--purple-dark); }
   .copy-btn:active { transform: scale(.98); }
-  .copy-btn.copied { background: #16A34A; }
+  .copy-btn.copied { background: var(--green); }
 
-  /* WHAT YOU GET */
-  .features {
+  /* ── ACTIVE FEATURES ── */
+  .features-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 16px;
+    gap: 8px;
   }
 
-  @media (max-width: 400px) { .features { grid-template-columns: 1fr; } }
+  @media (max-width: 400px) { .features-grid { grid-template-columns: 1fr; } }
 
   .feat {
     display: flex;
@@ -363,86 +407,112 @@
     gap: 8px;
     font-size: 12px;
     color: var(--muted);
+    padding: 6px 0;
   }
 
   .feat-dot {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: var(--purple);
+    background: var(--hairline-strong);
     flex-shrink: 0;
   }
 
-  .feat.on { color: var(--text); }
-  .feat.on .feat-dot { background: #16A34A; }
+  .feat.on { color: var(--ink); }
+  .feat.on .feat-dot { background: var(--green); }
 
-  /* INSTALL HINT */
+  /* ── INSTALL HINT ── */
   .install-hint {
-    margin-top: 16px;
-    padding: 12px 14px;
-    background: var(--purple-light);
-    border-radius: 8px;
-    font-size: 12px;
+    padding: 14px 16px;
+    background: var(--purple-surface);
+    border: 1px solid var(--purple-border);
+    border-radius: var(--r-md);
+    font-size: 13px;
     color: var(--purple-dark);
     line-height: 1.6;
   }
 
-  .install-hint strong { display: block; margin-bottom: 2px; font-size: 13px; }
+  .install-hint strong {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 600;
+    color: var(--purple-dark);
+  }
 
-  /* SECTION DIVIDER */
-  .section-gap { grid-column: 1 / -1; }
+  .install-hint code {
+    font-family: var(--mono);
+    font-size: 12px;
+    background: rgba(123,127,232,.12);
+    padding: 1px 5px;
+    border-radius: 4px;
+  }
+
+  /* ── FOOTER NOTE ── */
+  .footer-note {
+    padding: 14px 16px;
+    font-size: 12px;
+    color: var(--body);
+    line-height: 1.7;
+  }
+
+  .footer-note strong { color: var(--ink); font-size: 13px; }
+
+  .footer-note a {
+    color: var(--purple);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .footer-note a:hover { text-decoration: underline; }
+
+  /* ── FEAT ICONS ── */
+  .feat-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    color: var(--muted-soft);
+  }
+  .feat.on .feat-icon { color: var(--purple); }
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-logo">
-    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-  </div>
-  <span class="nav-name">Brace</span>
-  <span class="nav-tag">Configurator</span>
-</nav>
 
-<div class="hero">
-  <h1>Your website, <span>fully equipped.</span><br>One script tag.</h1>
-  <p>Fill in your details below. Copy the generated tag. Paste it before <code>&lt;/body&gt;</code> on your site. Done.</p>
-</div>
-
-<div class="layout">
+<div class="page">
 
   <!-- LEFT: CONFIG -->
-  <div>
-    <!-- BASICS -->
-    <div class="card" style="margin-bottom:16px">
-      <div class="card-title">Your Business</div>
+  <div class="config-col">
+
+    <div class="card">
+      <div class="card-label">Your Business</div>
 
       <div class="field">
-        <label>Business Name <span class="badge">Required for WhatsApp</span></label>
+        <div class="field-label">Business Name <span class="badge badge-req">Required for WhatsApp</span></div>
         <input type="text" id="f-business" placeholder="e.g. Mama Pima Bakery" oninput="update()">
       </div>
 
       <div class="field">
-        <label>WhatsApp Number <span class="badge opt">Optional</span></label>
-        <input type="text" id="f-whatsapp" placeholder="e.g. 254712345678 or +1 415 555 0100" oninput="update()">
-        <div class="hint">Include country code. Leave blank to skip the WhatsApp button.</div>
+        <div class="field-label">WhatsApp Number <span class="badge badge-opt">Optional</span></div>
+        <input type="text" id="f-whatsapp" placeholder="254712345678" oninput="update()">
+        <div class="field-hint">Include country code. Leave blank to skip the WhatsApp button.</div>
       </div>
 
       <div class="field">
-        <label>Pre-filled Message <span class="badge opt">Optional</span></label>
+        <div class="field-label">Pre-filled Message <span class="badge badge-opt">Optional</span></div>
         <input type="text" id="f-message" placeholder="Hi, I'd like to place an order" oninput="update()">
       </div>
 
       <div class="field">
-        <label>Button Colour <span class="badge opt">Optional</span></label>
+        <div class="field-label">Button Colour <span class="badge badge-opt">Optional</span></div>
         <div class="color-row">
           <input type="text" id="f-color-text" value="#25D366" oninput="syncColor('text')" placeholder="#25D366">
           <input type="color" id="f-color-pick" value="#25D366" oninput="syncColor('pick')">
         </div>
-        <div class="hint">Defaults to WhatsApp green. Use your brand colour if you prefer.</div>
+        <div class="field-hint">Defaults to WhatsApp green. Swap for your brand colour.</div>
       </div>
 
       <div class="field">
-        <label>Button Position <span class="badge opt">Optional</span></label>
+        <div class="field-label">Button Position <span class="badge badge-opt">Optional</span></div>
         <select id="f-position" onchange="update()">
           <option value="right">Bottom Right (default)</option>
           <option value="left">Bottom Left</option>
@@ -450,48 +520,52 @@
       </div>
     </div>
 
-    <!-- ANALYTICS -->
-    <div class="card" style="margin-bottom:16px">
-      <div class="card-title">Analytics (optional)</div>
+    <div class="card">
+      <div class="card-label">Analytics</div>
 
       <div class="field">
-        <label>Google Analytics 4 ID <span class="badge opt">Optional</span></label>
+        <div class="field-label">Google Analytics 4 ID <span class="badge badge-opt">Optional</span></div>
         <input type="text" id="f-ga" placeholder="G-XXXXXXXXXX" oninput="update()">
-        <div class="hint">Find this in Google Analytics → Admin → Data Streams.</div>
+        <div class="field-hint">Find this in Google Analytics → Admin → Data Streams.</div>
       </div>
 
       <div class="field">
-        <label>Facebook Pixel ID <span class="badge opt">Optional</span></label>
+        <div class="field-label">Facebook Pixel ID <span class="badge badge-opt">Optional</span></div>
         <input type="text" id="f-pixel" placeholder="XXXXXXXXXXXXXXXXX" oninput="update()">
-        <div class="hint">Find this in Meta Business Manager → Events Manager.</div>
+        <div class="field-hint">Find this in Meta Business Manager → Events Manager.</div>
       </div>
     </div>
 
-    <!-- CONTACT FORM -->
-    <div class="card" style="margin-bottom:16px">
-      <div class="card-title">Contact Form (optional)</div>
+    <div class="card">
+      <div class="card-label">Contact Form</div>
+
       <div class="field">
-        <label>EmailJS Public Key <span class="badge opt">Optional</span></label>
+        <div class="field-label">EmailJS Public Key <span class="badge badge-opt">Optional</span></div>
         <input type="text" id="f-emailjs" placeholder="your_public_key" oninput="update()">
-        <div class="hint">Free at emailjs.com. Without this, form submissions open the user's mail app instead.</div>
+        <div class="field-hint">Free at emailjs.com. Without this, form submissions open the user's mail app instead.</div>
       </div>
+
       <div class="field">
-        <label>EmailJS Service ID <span class="badge opt">Optional</span></label>
+        <div class="field-label">EmailJS Service ID <span class="badge badge-opt">Optional</span></div>
         <input type="text" id="f-emailjs-svc" placeholder="service_xxxxxxx" oninput="update()">
       </div>
+
       <div class="field">
-        <label>EmailJS Template ID <span class="badge opt">Optional</span></label>
+        <div class="field-label">EmailJS Template ID <span class="badge badge-opt">Optional</span></div>
         <input type="text" id="f-emailjs-tpl" placeholder="template_xxxxxxx" oninput="update()">
       </div>
     </div>
 
-    <!-- MODULE TOGGLES -->
     <div class="card">
-      <div class="card-title">Features — click to toggle</div>
+      <div class="card-label">Features — click to toggle</div>
       <div class="toggles" id="toggles">
+
         <div class="toggle-row active" data-mod="seo" onclick="toggleMod(this)">
           <div class="toggle-info">
-            <div class="toggle-icon">🔍</div>
+            <div class="toggle-icon">
+              <!-- magnifier -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
             <div class="toggle-text">
               <strong>SEO Meta Tags</strong>
               <span>Auto-injects title, description, og tags if missing</span>
@@ -499,19 +573,27 @@
           </div>
           <div class="switch"></div>
         </div>
+
         <div class="toggle-row active" data-mod="speed" onclick="toggleMod(this)">
           <div class="toggle-info">
-            <div class="toggle-icon">⚡</div>
+            <div class="toggle-icon">
+              <!-- zap / bolt -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
             <div class="toggle-text">
               <strong>Speed</strong>
-              <span>Lazy images, defer scripts, preconnect hints</span>
+              <span>Lazy images, deferred scripts, preconnect hints</span>
             </div>
           </div>
           <div class="switch"></div>
         </div>
+
         <div class="toggle-row active" data-mod="cookie" onclick="toggleMod(this)">
           <div class="toggle-info">
-            <div class="toggle-icon">🍪</div>
+            <div class="toggle-icon">
+              <!-- shield -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
             <div class="toggle-text">
               <strong>Cookie Consent</strong>
               <span>GDPR-compliant banner, remembers user choice</span>
@@ -519,9 +601,13 @@
           </div>
           <div class="switch"></div>
         </div>
+
         <div class="toggle-row active" data-mod="forms" onclick="toggleMod(this)">
           <div class="toggle-info">
-            <div class="toggle-icon">📩</div>
+            <div class="toggle-icon">
+              <!-- mail -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
             <div class="toggle-text">
               <strong>Contact Form</strong>
               <span>Enhances any form with success/error handling</span>
@@ -529,19 +615,27 @@
           </div>
           <div class="switch"></div>
         </div>
+
         <div class="toggle-row" data-mod="ga" onclick="toggleMod(this)">
           <div class="toggle-info">
-            <div class="toggle-icon">📊</div>
+            <div class="toggle-icon">
+              <!-- bar chart -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
+            </div>
             <div class="toggle-text">
               <strong>Google Analytics</strong>
-              <span>Loads lazily after interaction, won't slow your page</span>
+              <span>Loads lazily after interaction</span>
             </div>
           </div>
           <div class="switch"></div>
         </div>
+
         <div class="toggle-row" data-mod="pixel" onclick="toggleMod(this)">
           <div class="toggle-info">
-            <div class="toggle-icon">🎯</div>
+            <div class="toggle-icon">
+              <!-- target / crosshair -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg>
+            </div>
             <div class="toggle-text">
               <strong>Facebook Pixel</strong>
               <span>Loads lazily on first scroll</span>
@@ -549,44 +643,55 @@
           </div>
           <div class="switch"></div>
         </div>
+
       </div>
     </div>
+
   </div>
 
   <!-- RIGHT: OUTPUT -->
-  <div class="output-panel">
-    <div class="card" style="padding:0;overflow:hidden;">
-      <div class="output-card">
-        <div class="output-header">
-          <div class="output-dots">
+  <div class="output-sticky">
+    <div class="output-wrap">
+
+      <!-- Code block — white -->
+      <div class="code-card">
+        <div class="code-header">
+          <div class="code-dots">
             <span></span><span></span><span></span>
           </div>
-          <div class="output-label">Your Script Tag</div>
+          <div class="code-title">Your Script Tag</div>
+          <div style="width:52px;"></div>
         </div>
-        <div class="output-code" id="output-code"></div>
-      </div>
-      <button class="copy-btn" id="copy-btn" onclick="copyTag()">Copy Script Tag</button>
-    </div>
-
-    <div class="card" style="margin-top:16px;">
-      <div class="card-title">How to use it</div>
-      <div class="install-hint">
-        <strong>Paste before <code>&lt;/body&gt;</code> on every page of your website.</strong>
-        Works on any website — plain HTML, WordPress (paste in footer via Appearance → Theme Editor → footer.php), or any CMS that allows custom HTML.
+        <div class="code-body" id="output-code"></div>
       </div>
 
-      <div style="margin-top:16px">
-        <div class="card-title" style="margin-bottom:10px">Active features</div>
-        <div class="features" id="feat-list"></div>
-      </div>
-    </div>
+      <!-- Copy button — purple -->
+      <button class="copy-btn" id="copy-btn" onclick="copyTag()">Copy script tag</button>
 
-    <div class="card" style="margin-top:16px; padding: 16px 20px;">
-      <div style="font-size:12px; color: var(--muted); line-height:1.7;">
-        <strong style="color:var(--text); font-size:13px;">Brace is free, forever.</strong><br>
-        Open source · Zero dependencies · &lt;12KB minified · 
-        <a href="https://github.com/georgekimaninjoroge/brace" style="color:var(--purple);text-decoration:none;font-weight:600;">GitHub ↗</a>
+      <!-- How to use -->
+      <div class="card" style="padding:0; overflow:hidden;">
+        <div style="padding:20px 20px 16px">
+          <div class="card-label" style="margin-bottom:14px">How to use it</div>
+          <div class="install-hint">
+            <strong>Paste before <code>&lt;/body&gt;</code> on every page.</strong>
+            Works on plain HTML, WordPress (Appearance → Theme Editor → footer.php), or any CMS that allows custom scripts.
+          </div>
+
+          <div style="margin-top:20px">
+            <div class="card-label" style="margin-bottom:12px">Active features</div>
+            <div class="features-grid" id="feat-list"></div>
+          </div>
+        </div>
+
+        <div style="border-top:1px solid var(--hairline);">
+          <div class="footer-note">
+            <strong>Brace is free, forever.</strong>
+            Open source · Zero dependencies
+            <a href="https://github.com/georgekimaninjoroge/brace" target="_blank">GitHub↗</a>
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
 
@@ -594,6 +699,17 @@
 
 <script>
   var enabled = new Set(['seo','speed','cookie','forms']);
+
+  // SVG icons for feat list (inline, small)
+  var featIcons = {
+    seo:   '<svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
+    speed: '<svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
+    cookie:'<svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+    forms: '<svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',
+    ga:    '<svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>',
+    pixel: '<svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg>',
+    wa:    '<svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>'
+  };
 
   function toggleMod(el) {
     var mod = el.dataset.mod;
@@ -614,126 +730,112 @@
 
   function val(id) { return document.getElementById(id).value.trim(); }
 
+  function esc(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
   function update() {
-    var business  = val('f-business');
-    var whatsapp  = val('f-whatsapp');
-    var message   = val('f-message');
-    var color     = val('f-color-text');
-    var position  = val('f-position');
-    var ga        = val('f-ga');
-    var pixel     = val('f-pixel');
-    var emailjs   = val('f-emailjs');
-    var ejsSvc    = val('f-emailjs-svc');
-    var ejsTpl    = val('f-emailjs-tpl');
+    var business = val('f-business');
+    var whatsapp = val('f-whatsapp');
+    var message  = val('f-message');
+    var color    = val('f-color-text');
+    var position = val('f-position');
+    var ga       = val('f-ga');
+    var pixel    = val('f-pixel');
+    var emailjs  = val('f-emailjs');
+    var ejsSvc   = val('f-emailjs-svc');
+    var ejsTpl   = val('f-emailjs-tpl');
 
     var disabled = [];
     ['seo','speed','cookie','forms','ga','pixel'].forEach(function(m){
       if (!enabled.has(m)) disabled.push(m);
     });
 
-    // Build raw tag
     var lines = ['<script'];
-    lines.push('  src="https://cdn.jsdelivr.net/npm/brace-ke/brace.js"');
-    if (whatsapp)  lines.push('  data-whatsapp="' + whatsapp + '"');
-    if (business)  lines.push('  data-business="' + business + '"');
-    if (message)   lines.push('  data-message="' + message + '"');
+    lines.push('  src="https://cdn.jsdelivr.net/npm/getbrace/brace.js"');
+    if (whatsapp) lines.push('  data-whatsapp="' + whatsapp + '"');
+    if (business) lines.push('  data-business="' + business + '"');
+    if (message)  lines.push('  data-message="' + message + '"');
     if (color && color !== '#25D366') lines.push('  data-color="' + color + '"');
     if (position === 'left') lines.push('  data-position="left"');
-    if (ga)        lines.push('  data-ga="' + ga + '"');
-    if (pixel)     lines.push('  data-pixel="' + pixel + '"');
-    if (emailjs)   lines.push('  data-emailjs="' + emailjs + '"');
-    if (ejsSvc)    lines.push('  data-emailjs-service="' + ejsSvc + '"');
-    if (ejsTpl)    lines.push('  data-emailjs-template="' + ejsTpl + '"');
+    if (ga)       lines.push('  data-ga="' + ga + '"');
+    if (pixel)    lines.push('  data-pixel="' + pixel + '"');
+    if (emailjs)  lines.push('  data-emailjs="' + emailjs + '"');
+    if (ejsSvc)   lines.push('  data-emailjs-service="' + ejsSvc + '"');
+    if (ejsTpl)   lines.push('  data-emailjs-template="' + ejsTpl + '"');
     if (disabled.length) lines.push('  data-disable="' + disabled.join(',') + '"');
     lines.push('  async>');
     lines.push('<\/script>');
 
-    var raw = lines.join('\n');
+    window._rawTag = lines.join('\n');
 
-    // Syntax highlighted version
-    var hl = lines.map(function(line, i) {
-      if (i === 0) return '<span class="tok-tag">&lt;script</span>';
-      if (line.trim().startsWith('src=')) return '  <span class="tok-attr">src</span>=<span class="tok-val">"' + esc(val('f') || 'https://cdn.jsdelivr.net/npm/brace-ke/brace.js') + '"</span>';
-      if (line.includes('async>')) return '  <span class="tok-attr">async</span><span class="tok-tag">&gt;</span>';
-      if (line.includes('<\/script>')) return '<span class="tok-tag">&lt;\/script&gt;</span>';
-      // attribute lines
-      var m = line.match(/^\s*(data-[\w-]+)="(.*)"/);
-      if (m) return '  <span class="tok-attr">' + m[1] + '</span>=<span class="tok-val">"' + esc(m[2]) + '"</span>';
-      return esc(line);
-    }).join('\n');
+    var hl = [];
+    hl.push('<span class="tok-tag">&lt;script</span>');
+    hl.push('  <span class="tok-attr">src</span>=<span class="tok-val">"https://cdn.jsdelivr.net/npm/getbrace/brace.js"</span>');
+    if (whatsapp) hl.push('  <span class="tok-attr">data-whatsapp</span>=<span class="tok-val">"' + esc(whatsapp) + '"</span>');
+    if (business) hl.push('  <span class="tok-attr">data-business</span>=<span class="tok-val">"' + esc(business) + '"</span>');
+    if (message)  hl.push('  <span class="tok-attr">data-message</span>=<span class="tok-val">"' + esc(message) + '"</span>');
+    if (color && color !== '#25D366') hl.push('  <span class="tok-attr">data-color</span>=<span class="tok-val">"' + esc(color) + '"</span>');
+    if (position === 'left') hl.push('  <span class="tok-attr">data-position</span>=<span class="tok-val">"left"</span>');
+    if (ga)       hl.push('  <span class="tok-attr">data-ga</span>=<span class="tok-val">"' + esc(ga) + '"</span>');
+    if (pixel)    hl.push('  <span class="tok-attr">data-pixel</span>=<span class="tok-val">"' + esc(pixel) + '"</span>');
+    if (emailjs)  hl.push('  <span class="tok-attr">data-emailjs</span>=<span class="tok-val">"' + esc(emailjs) + '"</span>');
+    if (ejsSvc)   hl.push('  <span class="tok-attr">data-emailjs-service</span>=<span class="tok-val">"' + esc(ejsSvc) + '"</span>');
+    if (ejsTpl)   hl.push('  <span class="tok-attr">data-emailjs-template</span>=<span class="tok-val">"' + esc(ejsTpl) + '"</span>');
+    if (disabled.length) hl.push('  <span class="tok-attr">data-disable</span>=<span class="tok-val">"' + esc(disabled.join(',')) + '"</span>');
+    hl.push('  <span class="tok-attr">async</span><span class="tok-tag">&gt;</span>');
+    hl.push('<span class="tok-tag">&lt;/script&gt;</span>');
 
-    // Rebuild highlighted properly
-    var hlLines = [];
-    hlLines.push('<span class="tok-tag">&lt;script</span>');
-    hlLines.push('  <span class="tok-attr">src</span>=<span class="tok-val">"https://cdn.jsdelivr.net/npm/brace-ke/brace.js"</span>');
-    if (whatsapp)  hlLines.push('  <span class="tok-attr">data-whatsapp</span>=<span class="tok-val">"' + esc(whatsapp) + '"</span>');
-    if (business)  hlLines.push('  <span class="tok-attr">data-business</span>=<span class="tok-val">"' + esc(business) + '"</span>');
-    if (message)   hlLines.push('  <span class="tok-attr">data-message</span>=<span class="tok-val">"' + esc(message) + '"</span>');
-    if (color && color !== '#25D366') hlLines.push('  <span class="tok-attr">data-color</span>=<span class="tok-val">"' + esc(color) + '"</span>');
-    if (position === 'left') hlLines.push('  <span class="tok-attr">data-position</span>=<span class="tok-val">"left"</span>');
-    if (ga)        hlLines.push('  <span class="tok-attr">data-ga</span>=<span class="tok-val">"' + esc(ga) + '"</span>');
-    if (pixel)     hlLines.push('  <span class="tok-attr">data-pixel</span>=<span class="tok-val">"' + esc(pixel) + '"</span>');
-    if (emailjs)   hlLines.push('  <span class="tok-attr">data-emailjs</span>=<span class="tok-val">"' + esc(emailjs) + '"</span>');
-    if (ejsSvc)    hlLines.push('  <span class="tok-attr">data-emailjs-service</span>=<span class="tok-val">"' + esc(ejsSvc) + '"</span>');
-    if (ejsTpl)    hlLines.push('  <span class="tok-attr">data-emailjs-template</span>=<span class="tok-val">"' + esc(ejsTpl) + '"</span>');
-    if (disabled.length) hlLines.push('  <span class="tok-attr">data-disable</span>=<span class="tok-val">"' + esc(disabled.join(',')) + '"</span>');
-    hlLines.push('  <span class="tok-attr">async</span><span class="tok-tag">&gt;</span>');
-    hlLines.push('<span class="tok-tag">&lt;/script&gt;</span>');
+    document.getElementById('output-code').innerHTML = hl.join('\n');
 
-    document.getElementById('output-code').innerHTML = hlLines.join('\n');
-
-    // Store raw for copy
-    window._rawTag = raw;
-
-    // Feature list
-    var allFeats = [
-      { mod: 'seo',    icon: '🔍', label: 'SEO Meta Tags' },
-      { mod: 'speed',  icon: '⚡', label: 'Speed' },
-      { mod: 'cookie', icon: '🍪', label: 'Cookie Consent' },
-      { mod: 'forms',  icon: '📩', label: 'Contact Forms' },
-      { mod: 'ga',     icon: '📊', label: 'Analytics', cond: !!ga },
-      { mod: 'pixel',  icon: '🎯', label: 'Facebook Pixel', cond: !!pixel },
-      { mod: 'wa',     icon: '💬', label: 'WhatsApp Button', cond: !!whatsapp },
+    var feats = [
+      { mod: 'seo',   label: 'SEO Meta Tags' },
+      { mod: 'speed', label: 'Speed' },
+      { mod: 'cookie',label: 'Cookie Consent' },
+      { mod: 'forms', label: 'Contact Forms' },
+      { mod: 'ga',    label: 'Analytics',       cond: !!ga },
+      { mod: 'pixel', label: 'Facebook Pixel',  cond: !!pixel },
+      { mod: 'wa',    label: 'WhatsApp Button', cond: !!whatsapp },
     ];
 
-    var html = allFeats.map(function(f) {
-      var active = enabled.has(f.mod) || (f.mod === 'wa' && !!whatsapp);
-      if (f.hasOwnProperty('cond')) active = active && f.cond;
-      return '<div class="feat' + (active ? ' on' : '') + '"><div class="feat-dot"></div>' + f.icon + ' ' + f.label + '</div>';
+    var html = feats.map(function(f) {
+      var on = f.mod === 'wa' ? !!whatsapp : enabled.has(f.mod);
+      if (f.hasOwnProperty('cond')) on = on && f.cond;
+      return '<div class="feat' + (on ? ' on' : '') + '"><div class="feat-dot"></div>' + (featIcons[f.mod] || '') + ' ' + f.label + '</div>';
     }).join('');
     document.getElementById('feat-list').innerHTML = html;
   }
 
-  function esc(s) {
-    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  }
-
   function copyTag() {
     var btn = document.getElementById('copy-btn');
-    navigator.clipboard.writeText(window._rawTag || '').then(function() {
+    var text = window._rawTag || '';
+    var done = function() {
       btn.textContent = '✓ Copied!';
       btn.classList.add('copied');
       setTimeout(function() {
-        btn.textContent = 'Copy Script Tag';
+        btn.textContent = 'Copy script tag';
         btn.classList.remove('copied');
       }, 2000);
-    }).catch(function() {
-      var ta = document.createElement('textarea');
-      ta.value = window._rawTag || '';
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      ta.remove();
-      btn.textContent = '✓ Copied!';
-      btn.classList.add('copied');
-      setTimeout(function() {
-        btn.textContent = 'Copy Script Tag';
-        btn.classList.remove('copied');
-      }, 2000);
-    });
+    };
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(done).catch(function() {
+        fallbackCopy(text); done();
+      });
+    } else {
+      fallbackCopy(text); done();
+    }
   }
 
-  // Init
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.cssText = 'position:fixed;opacity:0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    ta.remove();
+  }
+
   update();
 </script>
 </body>
