@@ -20,14 +20,14 @@ One script tag. WhatsApp, SEO, analytics and cookie consent. Everything a web ag
 A small business owner gets a quote from their web agency:
 
 ```
-WhatsApp integration    $40
-Google Analytics setup  $25
-SEO implementation      $60
-Cookie consent banner   $30
-Contact form            $40
-Speed optimisation      $40
-──────────────────────────
-Total                   $235
+WhatsApp integration    KES 5,200    (~$40)
+Google Analytics setup  KES 3,250    (~$25)
+SEO implementation      KES 7,800    (~$60)
+Cookie consent banner   KES 3,900    (~$30)
+Contact form            KES 5,200    (~$40)
+Speed optimisation      KES 5,200    (~$40)
+──────────────────────────────────────────
+Total                   KES 30,550   (~$235)
 ```
 
 Every single one of those line items is a script tag or a meta tag. Brace ships all of them free in one line of HTML.
