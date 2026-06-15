@@ -11,9 +11,9 @@
   <img src="https://img.shields.io/badge/works-everywhere-8F8DF6?style=flat-square&labelColor=1a1814" alt="works everywhere"/>
 </p>
 
-# Brace
-
-**One script tag. WhatsApp, SEO, analytics and cookie consent. Everything a web agency charges for, free.**
+<p align="center">
+One script tag. WhatsApp, SEO, analytics and cookie consent. Everything a web agency charges for, free.
+</p>
 
 ## The Problem
 
@@ -169,4 +169,4 @@ brace/
 
 ## License
 
-MIT © George Kimani Njoroge
+MIT © [George Kimani Njoroge](https://github.com/georgekimaninjoroge)
