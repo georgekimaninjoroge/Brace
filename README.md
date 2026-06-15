@@ -45,7 +45,7 @@ Paste this before `</body>` on any website:
 </script>
 ```
 
-Not sure what to put where? Use the **[visual configurator](https://georgekimaninjoroge.github.io/brace/)** — fill in your details, copy your tag.
+Not sure what to put where? Use the **[visual configurator](https://getbrace.netlify.app)** — fill in your details, copy your tag.
 
 Or install via npm:
 
