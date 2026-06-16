@@ -30,7 +30,7 @@ Speed optimisation      KES 5,200    (~$40)
 Total                   KES 30,550   (~$235)
 ```
 
-Every single one of those line items is a script tag or a meta tag. Brace ships all of them free in one line of HTML.
+Every single one of those line items is a script tag or a meta tag. Brace ships all of them free in one line of HTML..
 
 ## Install
 
