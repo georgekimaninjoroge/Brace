@@ -1,6 +1,6 @@
 {
   "name": "getbrace",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Essential web infrastructure for African SMEs — WhatsApp widget, analytics, SEO, cookie consent, contact forms and speed optimisation in one script tag.",
   "main": "brace.js",
   "scripts": {
