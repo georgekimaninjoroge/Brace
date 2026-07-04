@@ -60,7 +60,7 @@
     line-height: 1.5;
     font-size: 14px;
   }
-    /* ── HERO ── */
+    
   .hero {
     background: linear-gradient(180deg, var(--sky-light) 0%, var(--canvas) 100%);
     text-align: center;
@@ -99,7 +99,7 @@
     line-height: 1.6;
   }
 
-  /* ── LAYOUT ── */
+  
   .page {
     max-width: 1160px;
     margin: 0 auto;
@@ -117,7 +117,7 @@
 
   .config-col { display: flex; flex-direction: column; gap: 16px; }
 
-  /* ── CARD ── */
+  
   .card {
     background: var(--surface-card);
     border: 1px solid var(--hairline-strong);
@@ -134,7 +134,7 @@
     margin-bottom: 20px;
   }
 
-  /* ── FIELDS ── */
+  
   .field { margin-bottom: 18px; }
   .field:last-child { margin-bottom: 0; }
 
@@ -190,7 +190,7 @@
     line-height: 1.5;
   }
 
-  /* ── COLOR ROW ── */
+  
   .color-row {
     display: flex;
     gap: 8px;
@@ -210,7 +210,7 @@
     flex-shrink: 0;
   }
 
-  /* ── TOGGLES ── */
+  
   .toggles { display: flex; flex-direction: column; gap: 8px; }
 
   .toggle-row {
@@ -277,7 +277,7 @@
     line-height: 1.4;
   }
 
-  /* ── PILL SWITCH ── */
+  
   .switch {
     width: 38px;
     height: 22px;
@@ -304,7 +304,7 @@
   .toggle-row.active .switch { background: var(--purple); }
   .toggle-row.active .switch::after { transform: translateX(16px); }
 
-  /* ── OUTPUT PANEL ── */
+  
   .output-sticky {
     position: sticky;
     top: 80px;
@@ -316,7 +316,7 @@
     gap: 16px;
   }
 
-  /* CODE CARD — now white */
+  
   .code-card {
     background: var(--canvas);
     border: 1px solid var(--hairline-strong);
@@ -364,12 +364,12 @@
     background: var(--canvas);
   }
 
-  /* syntax tokens for white bg */
+  
   .tok-tag  { color: var(--purple-dark); }
   .tok-attr { color: #7c3aed; }
   .tok-val  { color: #16a34a; }
 
-  /* COPY BUTTON — purple accent */
+  
   .copy-btn {
     display: block;
     width: 100%;
@@ -391,7 +391,7 @@
   .copy-btn:active { transform: scale(.98); }
   .copy-btn.copied { background: var(--green); }
 
-  /* ── ACTIVE FEATURES ── */
+  
   .features-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -420,7 +420,7 @@
   .feat.on { color: var(--ink); }
   .feat.on .feat-dot { background: var(--green); }
 
-  /* ── INSTALL HINT ── */
+  
   .install-hint {
     padding: 14px 16px;
     background: var(--purple-surface);
@@ -446,7 +446,7 @@
     border-radius: 4px;
   }
 
-  /* ── FOOTER NOTE ── */
+  
   .footer-note {
     padding: 14px 16px;
     font-size: 12px;
@@ -464,7 +464,7 @@
 
   .footer-note a:hover { text-decoration: underline; }
 
-  /* ── FEAT ICONS ── */
+  
   .feat-icon {
     width: 14px;
     height: 14px;
@@ -476,10 +476,9 @@
 </head>
 <body>
 
-
 <div class="page">
 
-  <!-- LEFT: CONFIG -->
+  
   <div class="config-col">
 
     <div class="card">
@@ -562,7 +561,7 @@
         <div class="toggle-row active" data-mod="seo" onclick="toggleMod(this)">
           <div class="toggle-info">
             <div class="toggle-icon">
-              <!-- magnifier -->
+              
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
             </div>
             <div class="toggle-text">
@@ -576,7 +575,7 @@
         <div class="toggle-row active" data-mod="speed" onclick="toggleMod(this)">
           <div class="toggle-info">
             <div class="toggle-icon">
-              <!-- zap / bolt -->
+              
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
             </div>
             <div class="toggle-text">
@@ -590,7 +589,7 @@
         <div class="toggle-row active" data-mod="cookie" onclick="toggleMod(this)">
           <div class="toggle-info">
             <div class="toggle-icon">
-              <!-- shield -->
+              
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
             <div class="toggle-text">
@@ -604,7 +603,7 @@
         <div class="toggle-row active" data-mod="forms" onclick="toggleMod(this)">
           <div class="toggle-info">
             <div class="toggle-icon">
-              <!-- mail -->
+              
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </div>
             <div class="toggle-text">
@@ -618,7 +617,7 @@
         <div class="toggle-row" data-mod="ga" onclick="toggleMod(this)">
           <div class="toggle-info">
             <div class="toggle-icon">
-              <!-- bar chart -->
+              
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
             </div>
             <div class="toggle-text">
@@ -632,7 +631,7 @@
         <div class="toggle-row" data-mod="pixel" onclick="toggleMod(this)">
           <div class="toggle-info">
             <div class="toggle-icon">
-              <!-- target / crosshair -->
+              
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg>
             </div>
             <div class="toggle-text">
@@ -648,11 +647,11 @@
 
   </div>
 
-  <!-- RIGHT: OUTPUT -->
+  
   <div class="output-sticky">
     <div class="output-wrap">
 
-      <!-- Code block — white -->
+      
       <div class="code-card">
         <div class="code-header">
           <div class="code-dots">
@@ -664,10 +663,10 @@
         <div class="code-body" id="output-code"></div>
       </div>
 
-      <!-- Copy button — purple -->
+      
       <button class="copy-btn" id="copy-btn" onclick="copyTag()">Copy script tag</button>
 
-      <!-- How to use -->
+      
       <div class="card" style="padding:0; overflow:hidden;">
         <div style="padding:20px 20px 16px">
           <div class="card-label" style="margin-bottom:14px">How to use it</div>
@@ -699,7 +698,7 @@
 <script>
   var enabled = new Set(['seo','speed','cookie','forms']);
 
-  // SVG icons for feat list (inline, small)
+  
   var featIcons = {
     seo:   '<svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
     speed: '<svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
